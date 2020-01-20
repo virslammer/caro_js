@@ -33,3 +33,6 @@
 	color:white;
 	font-size:2em;
 }
+.board-disabled {
+	pointer-events: none;
+}
