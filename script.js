@@ -49,7 +49,7 @@ function startGame() {
 	}
 }
 function resetGame() {
-	document.getElementById('board').classList.remove('board-disabled')
+	document.getElementById('board').classList.remove('board-disabled');
 	document.getElementById('game-status').innerHTML = '';
 	document.getElementById("startGame").disabled = false;
 	currentPlayer = player1;
@@ -57,10 +57,11 @@ function resetGame() {
 	startGame()
 }
 function turnClick(square) {
-
+	document.getElementsByClassName('cell').style.backgroundColor = 'white';
+	this.style.backgroundColor = '#00ffa6';
 	var squareId = square.target.id;
 	var boardIndex = squareId.split('-')
-	if (document.getElementById(squareId).innerHTML == '') {
+	if (this.innerHTML == '') {
 		
 		if (currentPlayer == player1) {
 			board[Number(boardIndex[0])][Number(boardIndex[1])] = 1;
@@ -81,6 +82,7 @@ function turnClick(square) {
 
 function turn(squareId, player) {
 	document.getElementById(squareId).innerHTML = player;
+	
 	if (player == player2){
  		currentPlayer = player1
  		document.getElementById('game-status').innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
@@ -89,6 +91,7 @@ function turn(squareId, player) {
  		currentPlayer = player2
  		document.getElementById('game-status').innerHTML = 'This is turn of : player 2 (' + currentPlayer +')';
  	}
+
  	let gameWon = checkWin(currentPlayerByNumber, lastMove);
  	if (gameWon) {
  		document.getElementById('board').classList.add('board-disabled')
