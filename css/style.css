@@ -1,14 +1,21 @@
+
 #main-content {
 	margin:auto;
 	width:80%;
 	text-align:center;
+	font-family: 'EB Garamond', serif;
 	
 }
 #board {
 	margin:auto;
-}
 
+}
+#game-status {
+	display:block;
+	height:50px;
+}
 .cell {
+	color :white;
 	border:1px solid #1f3559;
 	padding:0px;
 	height:30px;
@@ -20,20 +27,12 @@
 	background-color:#ffffff;
 }
 .endGame {
-	display:none;
-	width:200px;
-	top:200px;
-	background-color: rgba(26, 178, 255,0.8);
-	position:absolute;
-	left:50%;
-	margin-left:-100px;
-	padding-top:50px;
-	padding-bottom:50px;
-	text-align:center;
-	border-radius:5px;
-	color:white;
 	font-size:2em;
+	color:white;
+	background-color:#aeb551;
+
 }
+
 .board-disabled {
 	pointer-events: none;
 }

@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>An simple caro App</title>
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="css\style.css">
+	<link href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="Skeleton-2.0.4\css\normalize.css">
 	<link rel="stylesheet" href="Skeleton-2.0.4\css\skeleton.css">
 	
@@ -11,20 +12,22 @@
 <body>
 	<div id='main-content'>
 		<div id='menu-section'>
-			<h3> Press start to play</h3>
+			<h2> A simple Caro game made by Minh Anh Hoang</h2>
+			<hr>
+			<h4> Press start to play</h4>
 
 			<br>
-			<button onclick="startGame()" id="startGame">Start</button>
-			<button onclick="resetGame()" id="resetGame">Reset</button>
+			<button onclick="StartGame()" id="startGame">Start</button>
+			<button onclick="ResetGame()" id="resetGame">Reset</button>
+
 			<p id='game-status'></p>
+
 		</div>
 		<div id='board-section'>
 			<table id='board'></table>
 		</div>
-		<div class="endGame">
-			<div class="text"></div>
-		</div>
+	
 	</div>
-	<script src="script_class_based.js"></script>
+	<script src="script.js"></script>
 </body>
 </html>
