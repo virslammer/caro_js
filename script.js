@@ -44,11 +44,13 @@ function Turn(squareId, player) {
  	var gameWon = CheckWin(currentPlayerByNumber, lastMove);
  	if (gameWon) {
  		document.getElementById('board').classList.add('board-disabled')
- 		document.getElementById('game-status').classList.add('endGame')
+ 		
  		if (currentPlayer == player1) {
+ 			document.getElementById('game-status').classList.add('endGamePlayer2')
  			document.getElementById('game-status').innerHTML = ' Player 2 (' + player2 + ') win' ;
  		}
  		if (currentPlayer == player2) {
+ 			document.getElementById('game-status').classList.add('endGamePlayer1')
  			document.getElementById('game-status').innerHTML = ' Player 1 (' + player1 + ') win' ;
 
  		}
@@ -98,30 +100,6 @@ function LegalSquare(square) {
 }
 
 
-// ******* Event happen when click on Button and Board .
-
-function StartGame() {
-	const cells = document.querySelectorAll('.cell');
-	document.getElementById("startGame").disabled = true;
-	document.getElementById('board').classList.remove('board-disabled')
-
-	for (var i=0; i<cells.length; i++) {
-		cells[i].innerText='';
-		cells[i].style.removeProperty('background-color');
-		cells[i].addEventListener('click', TurnClick,false );
-	document.getElementById('game-status').innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
-	
-	}
-}
-function ResetGame() {
-	document.getElementById('board').classList.remove('board-disabled');
-	document.getElementById('game-status').innerHTML = '';
-	document.getElementById("startGame").disabled = false;
-	document.getElementById('game-status').classList.remove('endGame')
-	currentPlayer = player1;
-	CreateBoard(boardSize)
-	StartGame()
-}
 function TurnClick(square) {
 	
 	
@@ -145,5 +123,32 @@ function TurnClick(square) {
 		Turn(squareId, currentPlayer);
 	}
 }
+
+// ******* Event happen when click on Button and Board .
+
+function StartGame() {
+	const cells = document.querySelectorAll('.cell');
+	document.getElementById("startGame").disabled = true;
+	document.getElementById('board').classList.remove('board-disabled')
+
+	for (var i=0; i<cells.length; i++) {
+		cells[i].innerText='';
+		cells[i].style.removeProperty('background-color');
+		cells[i].addEventListener('click', TurnClick,false );
+	document.getElementById('game-status').innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
+	
+	}
+}
+function ResetGame() {
+	document.getElementById('board').classList.remove('board-disabled');
+	document.getElementById('game-status').innerHTML = '';
+	document.getElementById("startGame").disabled = false;
+	document.getElementById('game-status').classList.remove('endGamePlayer1')
+	document.getElementById('game-status').classList.remove('endGamePlayer2')
+	currentPlayer = player1;
+	CreateBoard(boardSize)
+	StartGame()
+}
+
 
 CreateBoard(boardSize)

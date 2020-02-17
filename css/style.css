@@ -26,10 +26,16 @@
 	cursor:pointer;
 	background-color:#ffffff;
 }
-.endGame {
+.endGamePlayer1 {
 	font-size:2em;
 	color:white;
-	background-color:#aeb551;
+	background-color:#28445c;
+
+}
+.endGamePlayer2 {
+	font-size:2em;
+	color:white;
+	background-color:#5c2828;
 
 }
 
