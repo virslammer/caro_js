@@ -96,6 +96,30 @@ function LegalSquare(square) {
 }
 
 
+function TurnClick(square) {
+	
+	
+	var squareId = square.target.id;
+	var boardIndex = squareId.split('-')
+	if (this.innerHTML == '') {
+		
+		if (currentPlayer == player1) {
+			boardInArray[Number(boardIndex[0])][Number(boardIndex[1])] = 1;
+			currentPlayerByNumber = 1;
+			this.style.backgroundColor = '#28445c';
+		}
+		if (currentPlayer == player2) {
+			boardInArray[Number(boardIndex[0])][Number(boardIndex[1])] = 2;
+			currentPlayerByNumber = 2;
+			this.style.backgroundColor = '#5c2828';
+		}
+		lastMove[0] = Number(boardIndex[0]);
+		lastMove[1] = Number(boardIndex[1]);
+
+		Turn(squareId, currentPlayer);
+	}
+}
+
 // ******* Event happen when click on Button and Board .
 
 function StartGame() {
@@ -120,29 +144,7 @@ function ResetGame() {
 	CreateBoard(boardSize)
 	StartGame()
 }
-function TurnClick(square) {
-	
-	
-	var squareId = square.target.id;
-	var boardIndex = squareId.split('-')
-	if (this.innerHTML == '') {
-		
-		if (currentPlayer == player1) {
-			boardInArray[Number(boardIndex[0])][Number(boardIndex[1])] = 1;
-			currentPlayerByNumber = 1;
-			this.style.backgroundColor = '#28445c';
-		}
-		if (currentPlayer == player2) {
-			boardInArray[Number(boardIndex[0])][Number(boardIndex[1])] = 2;
-			currentPlayerByNumber = 2;
-			this.style.backgroundColor = '#5c2828';
-		}
-		lastMove[0] = Number(boardIndex[0]);
-		lastMove[1] = Number(boardIndex[1]);
 
-		Turn(squareId, currentPlayer);
-	}
-}
 
 function main() {
 	CreateBoard(boardSize);
