@@ -1,38 +1,39 @@
-
 #main-content {
-	margin:auto;
-	width:80%;
-	text-align:center;
-	font-family: 'EB Garamond', serif;
-	
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    font-family: 'EB Garamond', serif;
 }
+
 #board {
-	margin:auto;
-
+    margin: auto;
+    margin-bottom: 100px;
 }
+
 #game-status {
-	display:block;
-	height:50px;
+    display: block;
+    height: 50px;
 }
-.cell {
-	color :white;
-	border:1px solid #1f3559;
-	padding:0px;
-	height:30px;
-	width: 30px;
-	text-align:center;
-	vertical-align:middle;
-	font-size:18px;
-	cursor:pointer;
-	background-color:#ffffff;
-}
-.endGame {
-	font-size:2em;
-	color:white;
-	background-color:#aeb551;
 
+.cell {
+    color: white;
+    border: 1px solid #1f3559;
+    padding: 0px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+
+.endGame {
+    font-size: 2em;
+    color: white;
+    background-color: #aeb551;
 }
 
 .board-disabled {
-	pointer-events: none;
+    pointer-events: none;
 }

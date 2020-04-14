@@ -1,3 +1,7 @@
+const board_tb = document.getElementById('board')
+const gameStatus = document.getElementById('game-status')
+const startGame_btn = document.getElementById("startGame")
+const resetGame_btn = document.getElementById("resetGame")
 var boardInArray = new Array();
 var currentPlayer = 'O';
 var currentPlayerByNumber;
@@ -26,7 +30,7 @@ function CreateBoard(boardSize) {
 		}
 		board += "</tr>";
 	}
-	document.getElementById('board').innerHTML= board
+	board_tb.innerHTML= board
 }
 
 
@@ -35,31 +39,28 @@ function Turn(squareId, player) {
 	document.getElementById(squareId).innerHTML = player;
 	if (player == player2){
  		currentPlayer = player1
- 		document.getElementById('game-status').innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
+ 		gameStatus.innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
  	}
  	else {
  		currentPlayer = player2
- 		document.getElementById('game-status').innerHTML = 'This is turn of : player 2 (' + currentPlayer +')';
+ 		gameStatus.innerHTML = 'This is turn of : player 2 (' + currentPlayer +')';
  	}
  	var gameWon = CheckWin(currentPlayerByNumber, lastMove);
  	if (gameWon) {
- 		document.getElementById('board').classList.add('board-disabled')
- 		document.getElementById('game-status').classList.add('endGame')
+ 		board_tb.classList.add('board-disabled')
+ 		gameStatus.classList.add('endGame')
  		if (currentPlayer == player1) {
- 			document.getElementById('game-status').innerHTML = ' Player 2 (' + player2 + ') win' ;
+			gameStatus.innerHTML = ' Player 2 (' + player2 + ') win' ;
  		}
  		if (currentPlayer == player2) {
- 			document.getElementById('game-status').innerHTML = ' Player 1 (' + player1 + ') win' ;
-
+			gameStatus.innerHTML = ' Player 1 (' + player1 + ') win' ;
  		}
-
  	};
 }
 
 // Evaluate the last move and return True if found a row in 5
 function CheckWin(player, lastMove) {
     var isWon = false;
-
     // Check every directions
     for (var i = 0; i < lineDirections.length && !isWon; i++) {
         var shift = lineDirections[i];
@@ -71,9 +72,7 @@ function CheckWin(player, lastMove) {
             lineLength++;
             currentSquare[0] += shift[0];
             currentSquare[1] += shift[1];
-
-        }
-        
+        } 
         // Check the opposite side of the direction
         winMoves = [lastMove];
         currentSquare = [lastMove[0] - shift[0], lastMove[1] - shift[1]];
@@ -83,7 +82,6 @@ function CheckWin(player, lastMove) {
             lineLength++;
             currentSquare[0] -= shift[0];
             currentSquare[1] -= shift[1];
-
             
         }
         if (lineLength >= requiredLineLength)
@@ -102,22 +100,22 @@ function LegalSquare(square) {
 
 function StartGame() {
 	const cells = document.querySelectorAll('.cell');
-	document.getElementById("startGame").disabled = true;
-	document.getElementById('board').classList.remove('board-disabled')
+	startGame_btn.disabled = true;
+	board_tb.classList.remove('board-disabled')
 
 	for (var i=0; i<cells.length; i++) {
 		cells[i].innerText='';
 		cells[i].style.removeProperty('background-color');
 		cells[i].addEventListener('click', TurnClick,false );
-	document.getElementById('game-status').innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
+	gameStatus.innerHTML = 'This is turn of : player 1 (' + currentPlayer +')';
 	
 	}
 }
 function ResetGame() {
-	document.getElementById('board').classList.remove('board-disabled');
-	document.getElementById('game-status').innerHTML = '';
-	document.getElementById("startGame").disabled = false;
-	document.getElementById('game-status').classList.remove('endGame')
+	board_tb.classList.remove('board-disabled');
+	gameStatus.innerHTML = '';
+	gameStatus.classList.remove('endGame')
+	startGame_btn.disabled = false;
 	currentPlayer = player1;
 	CreateBoard(boardSize)
 	StartGame()
@@ -146,4 +144,10 @@ function TurnClick(square) {
 	}
 }
 
-CreateBoard(boardSize)
+function main() {
+	CreateBoard(boardSize);
+	startGame_btn.addEventListener('click', StartGame);
+	resetGame_btn.addEventListener('click', ResetGame);
+}
+
+main()
