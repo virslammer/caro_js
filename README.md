@@ -1,5 +1,7 @@
 # caro_js
-Playing caro by HTML , CSS , JS 
+Simple caro app by HTML , CSS , JS 
 
 Library in used :
 - Skeleton 2.0.4
+
+Cre:Minh Anh Hoang
